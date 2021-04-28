@@ -6,6 +6,7 @@ import { GlobalStyle } from '../style/GlobalStyles';
 import HeroSection from '../components/HeroSection/HeroSection';
 import Logos from '../components/Logos/Logos';
 import Services from '../components/Services/Services';
+import OtherServices from '../components/OtherServices/OtherServices';
 
 const IndexPage = () => {
   return (
@@ -15,6 +16,7 @@ const IndexPage = () => {
       <HeroSection />
       <Logos />
       <Services />
+      <OtherServices />
     </ThemeProvider>
   );
 };

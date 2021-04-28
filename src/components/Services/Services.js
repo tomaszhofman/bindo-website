@@ -64,11 +64,13 @@ const StyledImg = styled(Img)`
 
 const Services = () => {
   const data = useStaticQuery(graphql`
-    query GetPersonCalculatorImage {
-      file(relativePath: { eq: "person-calculator.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+    query MyQuery {
+      allFile {
+        nodes {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
@@ -80,7 +82,7 @@ const Services = () => {
     <Wrapper>
       <Container>
         <StyledImageWrapper>
-          <StyledImg fluid={data.file.childImageSharp.fluid} />
+          <StyledImg fluid={data.allFile.nodes[8].childImageSharp.fluid} />
         </StyledImageWrapper>
         <ServicesContentWrapper>
           <h2>Subscription index</h2>
@@ -93,7 +95,7 @@ const Services = () => {
       </Container>
       <Container>
         <StyledImageWrapper>
-          <StyledImg fluid={data.file.childImageSharp.fluid} />
+          <StyledImg fluid={data.allFile.nodes[4].childImageSharp.fluid} />
         </StyledImageWrapper>
         <ServicesContentWrapper>
           <h2>Subscription index</h2>
