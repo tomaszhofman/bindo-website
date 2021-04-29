@@ -15,6 +15,11 @@ const Wrapper = styled.section`
 const StyledContent = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const StyledDiv = styled.div`
@@ -22,6 +27,10 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    padding: 34px;
+  }
 
   h2 {
     font-size: 24px;
@@ -39,6 +48,10 @@ const StyledDiv = styled.div`
 
 const StyledImg = styled.img`
   width: 40%;
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    width: 100%;
+  }
 `;
 
 const OtherServices = () => {
