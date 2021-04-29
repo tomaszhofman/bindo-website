@@ -7,6 +7,7 @@ import HeroSection from '../components/HeroSection/HeroSection';
 import Logos from '../components/Logos/Logos';
 import Services from '../components/Services/Services';
 import OtherServices from '../components/OtherServices/OtherServices';
+import Pricing from '../components/Pricing/Pricing';
 
 const IndexPage = () => {
   return (
@@ -17,6 +18,7 @@ const IndexPage = () => {
       <Logos />
       <Services />
       <OtherServices />
+      <Pricing />
     </ThemeProvider>
   );
 };

@@ -16,6 +16,11 @@ const Wrapper = styled.section`
 const StyledImageWrapper = styled.div`
   width: 305px;
   width: 30%;
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    width: 50%;
+    padding-bottom: 20px;
+  }
 `;
 
 const ServicesContentWrapper = styled.div`
@@ -54,6 +59,16 @@ const Container = styled.div`
     ${StyledImageWrapper} {
       order: 2;
     }
+
+    @media (max-width: ${({ theme }) => theme.device.m}) {
+      ${StyledImageWrapper} {
+        order: 0;
+      }
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    flex-direction: column;
   }
 `;
 
