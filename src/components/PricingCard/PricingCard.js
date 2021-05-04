@@ -9,4 +9,12 @@ export const CardWrapper = styled.div`
   border-radius: 10px;
   box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.3);
   padding: 20px;
+  color: ${({ theme, orange }) =>
+    orange ? theme.colors.white : theme.colors.dark};
+
+  p,
+  h3 {
+    color: ${({ theme, orange }) =>
+      orange ? theme.colors.white : theme.colors.dark};
+  }
 `;

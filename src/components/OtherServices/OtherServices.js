@@ -10,6 +10,10 @@ const Wrapper = styled.section`
   margin: 0 auto;
   width: 100%;
   height: 40vh;
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    height: 100%;
+  }
 `;
 
 const StyledContent = styled.div`

@@ -7,6 +7,11 @@ const Wrapper = styled.section`
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    height: 100vh;
+    padding: 32px;
+  }
 `;
 
 const StyledPricingHeader = styled.div`
@@ -27,6 +32,10 @@ const StyledPricingCards = styled.div`
   align-items: center;
   width: 100%;
 
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    flex-direction: column;
+  }
+
   ${CardWrapper} {
     display: flex;
     flex-direction: column;
@@ -36,12 +45,32 @@ const StyledPricingCards = styled.div`
 
     div {
       color: ${({ theme }) => theme.colors.grey};
+      font-size: 18px;
     }
 
     h1 {
       font-size: 60px;
       font-weight: ${({ theme }) => theme.fontWeight.l};
       margin: 0;
+
+      span {
+        font-size: 18px;
+      }
+
+      @media (max-width: ${({ theme }) => theme.device.m}) {
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: ${({ theme }) => theme.device.m}) {
+      padding: 32px;
+      margin-bottom: 26px;
+      width: 60%;
+    }
+
+    @media (max-width: ${({ theme }) => theme.device.s}) {
+      width: 100%;
+      padding: 15px;
     }
   }
 `;
@@ -77,18 +106,23 @@ const Pricing = () => {
           <ButtonMain>Get Started</ButtonMain>
         </CardWrapper>
         <CardWrapper orange>
-          <div>Starter</div>
-          <h1>Free</h1>
+          <div>Premium</div>
+          <h1>
+            $29<span>/month</span>
+          </h1>
           <FeaturesWrapper>
             <p>1 Website</p>
             <p>5 GB Hosting</p>
             <p>Limited Support</p>
           </FeaturesWrapper>
-          <ButtonMain>Get Started</ButtonMain>
+          <ButtonMain orange>Get Started</ButtonMain>
         </CardWrapper>
         <CardWrapper>
-          <div>Starter</div>
-          <h1>Free</h1>
+          <div>Enterprise</div>
+          <h1>
+            $49<span>/month</span>
+          </h1>
+
           <FeaturesWrapper>
             <p>1 Website</p>
             <p>5 GB Hosting</p>

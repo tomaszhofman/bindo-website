@@ -6,7 +6,7 @@ export const ButtonMain = styled.button`
   height: 60px;
   padding: 8px 20px;
   background-color: ${({ theme, orange }) =>
-    orange ? theme.colors.orange : theme.colors.darkBlue};
+    orange ? theme.colors.darkOrange : theme.colors.darkBlue};
   border: none;
   color: ${({ theme }) => theme.colors.white};
   font-weight: ${({ theme }) => theme.fontWeight.l};
