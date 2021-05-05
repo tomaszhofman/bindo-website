@@ -7,6 +7,7 @@ const Wrapper = styled.section`
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  padding-bottom: 90px;
 
   @media (max-width: ${({ theme }) => theme.device.m}) {
     height: 100vh;

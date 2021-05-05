@@ -8,6 +8,7 @@ import Logos from '../components/Logos/Logos';
 import Services from '../components/Services/Services';
 import OtherServices from '../components/OtherServices/OtherServices';
 import Pricing from '../components/Pricing/Pricing';
+import Footer from '../components/Footer/Footer';
 
 const IndexPage = () => {
   return (
@@ -19,6 +20,7 @@ const IndexPage = () => {
       <Services />
       <OtherServices />
       <Pricing />
+      <Footer />
     </ThemeProvider>
   );
 };
