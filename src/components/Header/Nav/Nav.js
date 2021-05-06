@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { ButtonMain } from '../../ButtonMain/ButtonMain';
+
+import { animationsMoveY } from '../../../style/Animations';
 
 const Wrapper = styled.div`
   display: flex;
@@ -86,6 +88,12 @@ const StyledButtonMain = styled(ButtonMain)`
 `;
 
 const Nav = () => {
+  const navRef = useRef();
+
+  useEffect(() => {
+    const nav = navRef.current;
+    animationsMoveY(nav);
+  });
   const data = useStaticQuery(graphql`
     query GetHeaderLogo {
       file(relativePath: { eq: "logo.png" }) {
@@ -98,7 +106,7 @@ const Nav = () => {
     }
   `);
   return (
-    <Wrapper>
+    <Wrapper ref={navRef}>
       <StyledLogoWrapper hasDeclardeWith={220}>
         <h1>
           <Img

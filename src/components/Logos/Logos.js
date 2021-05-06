@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import logo1 from '../../assets/images/brands/logo1.png';
@@ -6,6 +6,8 @@ import logo2 from '../../assets/images/brands/logo2.png';
 import logo3 from '../../assets/images/brands/logo3.png';
 import logo4 from '../../assets/images/brands/logo4.png';
 import logo5 from '../../assets/images/brands/logo5.png';
+
+import { aniamtionScrollBottom } from '../../style/Animations';
 
 const Wrapper = styled.section`
   width: 100%;
@@ -59,10 +61,18 @@ const StyledLogo = styled.img`
     grid-area: link5;
   }
 `;
+
 const Logos = () => {
+  const logoRef = useRef();
+
+  useEffect(() => {
+    const logo = logoRef.current;
+
+    aniamtionScrollBottom(logo);
+  });
   return (
     <Wrapper>
-      <LogoWrapper>
+      <LogoWrapper ref={logoRef}>
         <StyledLogo src={logo1} alt="logo1" />
         <StyledLogo src={logo2} alt="logo2" />
         <StyledLogo src={logo3} alt="logo3" />

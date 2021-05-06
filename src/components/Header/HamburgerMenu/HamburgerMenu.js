@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+
+import { animationsMoveY } from '../../../style/Animations';
 
 const Wrapper = styled.button`
   cursor: pointer;
@@ -56,8 +58,14 @@ const StyledBox = styled.span`
   }
 `;
 const HamburgerMenu = () => {
+  const hamburgerRef = useRef();
+  useEffect(() => {
+    const hamburger = hamburgerRef.current;
+    animationsMoveY(hamburger);
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper ref={hamburgerRef}>
       <StyledBox>
         <span></span>
       </StyledBox>

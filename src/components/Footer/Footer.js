@@ -1,12 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ButtonMain } from '../ButtonMain/ButtonMain';
+import twitterIcon from '../../assets/images/social/twitter.svg';
+import facebookIcon from '../../assets/images/social/facebook.svg';
+import instagramIcon from '../../assets/images/social/instagram.svg';
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.black};
   width: 100%;
-  height: 60vh;
+  height: 50%;
   padding: 140px;
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    height: 100%;
+    padding: 100px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.device.s}) {
+    height: 100%;
+    padding: 50px;
+  }
 `;
 
 const Wrapper = styled.footer`
@@ -17,6 +30,13 @@ const Wrapper = styled.footer`
 const FooterUpperWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    display: grid;
+    grid-template-areas:
+      'cta link1'
+      'link2 link3';
+  }
 `;
 
 const CallToAction = styled.div`
@@ -24,6 +44,11 @@ const CallToAction = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 40px;
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    grid-area: link2;
+    min-width: 300px;
+  }
 
   h3 {
     color: ${({ theme }) => theme.colors.white};
@@ -33,7 +58,7 @@ const CallToAction = styled.div`
   }
 
   ${ButtonMain} {
-    width: 40%;
+    width: 200px;
     background-color: ${({ theme }) => theme.colors.orange};
     font-weight: ${({ theme }) => theme.fontWeight.m};
     font-size: 18px;
@@ -44,6 +69,11 @@ const GridWrapper = styled.div`
   width: 60%;
   display: grid;
   grid-template-areas: 'link1     link2   link3';
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    grid-template-areas: unset;
+    display: unset;
+  }
 `;
 
 const FooterMenuColumn = styled.ul`
@@ -55,18 +85,53 @@ const FooterMenuColumn = styled.ul`
   &:nth-child(1) {
     grid-area: link1;
   }
+
+  &:nth-child(2) {
+    grid-area: link2;
+  }
+  &:nth-child(3) {
+    grid-area: link3;
+  }
+
+  @media (max-width: ${({ theme }) => theme.device.m}) {
+    margin-bottom: 30px;
+  }
 `;
 
 const FooterMenuItem = styled.li`
   list-style: none;
   color: ${({ theme }) => theme.colors.white};
+  padding: 10px 10px 10px 0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.darkGray};
+  }
 `;
 
 const FooterBottom = styled.div`
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
   margin-top: 82px;
+
+  div {
+    display: flex;
+  }
+
+  p {
+    margin-right: 15px;
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
+const SocialLogosWrapper = styled.div`
+  display: inline-block;
+
+  img {
+    margin-right: 15px;
+  }
 `;
 
 const Footer = () => {
@@ -81,21 +146,36 @@ const Footer = () => {
           <GridWrapper>
             <FooterMenuColumn>
               <div>Services</div>
-              <FooterMenuItem>test</FooterMenuItem>
+              <FooterMenuItem>Email Marketing</FooterMenuItem>
+              <FooterMenuItem>Campaigns</FooterMenuItem>
+              <FooterMenuItem>Branding</FooterMenuItem>
+              <FooterMenuItem>Offline</FooterMenuItem>
             </FooterMenuColumn>
             <FooterMenuColumn>
               <div>About</div>
-              <FooterMenuItem>test</FooterMenuItem>
+              <FooterMenuItem>Our Story</FooterMenuItem>
+              <FooterMenuItem>Benefits</FooterMenuItem>
+              <FooterMenuItem>Team</FooterMenuItem>
+              <FooterMenuItem>Careers</FooterMenuItem>
             </FooterMenuColumn>
             <FooterMenuColumn>
               <div>Help</div>
-              <FooterMenuItem>test</FooterMenuItem>
+              <FooterMenuItem>FAQ</FooterMenuItem>
+              <FooterMenuItem>Contact</FooterMenuItem>
+              <FooterMenuItem>Benefits</FooterMenuItem>
             </FooterMenuColumn>
           </GridWrapper>
         </FooterUpperWrapper>
 
         <FooterBottom>
-          <div>Privacy Policy Privacy Policy</div>
+          <div>
+            <p>Privacy Policy </p> <p>Terms & Conditions</p>
+          </div>
+          <SocialLogosWrapper>
+            <img src={facebookIcon} alt="facebook" />
+            <img src={instagramIcon} alt="instagram" />
+            <img src={twitterIcon} alt="twitter" />
+          </SocialLogosWrapper>
         </FooterBottom>
       </Wrapper>
     </Background>

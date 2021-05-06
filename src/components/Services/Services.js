@@ -97,7 +97,7 @@ const Services = () => {
     <Wrapper>
       <Container>
         <StyledImageWrapper>
-          <StyledImg fluid={data.allFile.nodes[8].childImageSharp.fluid} />
+          <StyledImg fluid={data.allFile.nodes[13].childImageSharp.fluid} />
         </StyledImageWrapper>
         <ServicesContentWrapper>
           <h2>Subscription index</h2>
@@ -110,7 +110,8 @@ const Services = () => {
       </Container>
       <Container>
         <StyledImageWrapper>
-          <StyledImg fluid={data.allFile.nodes[4].childImageSharp.fluid} />
+          <StyledImg fluid={data.allFile.nodes[5].childImageSharp.fluid} />
+          {console.log(data.allFile.nodes)}
         </StyledImageWrapper>
         <ServicesContentWrapper>
           <h2>Subscription index</h2>

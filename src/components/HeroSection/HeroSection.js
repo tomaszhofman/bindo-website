@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import HeroLeftBar from './HeroLeftBar/HeroLeftBar';
+
+import {
+  animationOpacity,
+  animationsMoveX,
+  animationsMoveY,
+} from '../../style/Animations';
 
 const Wrapper = styled.section`
   height: 80vh;
@@ -52,6 +58,12 @@ const ImageWrapper = styled(Img)`
 `;
 
 const HeroSection = () => {
+  const heroSectionRef = useRef();
+
+  useEffect(() => {
+    const heroSection = heroSectionRef.current;
+    animationOpacity(heroSection, 2);
+  });
   const data = useStaticQuery(graphql`
     query GetHeroLogo {
       file(relativePath: { eq: "hero.png" }) {
@@ -64,7 +76,7 @@ const HeroSection = () => {
     }
   `);
   return (
-    <Wrapper>
+    <Wrapper ref={heroSectionRef}>
       <HeroLeftBar />
       <HeroStyledImg>
         <div>
