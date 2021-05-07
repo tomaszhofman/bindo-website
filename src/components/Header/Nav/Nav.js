@@ -35,13 +35,15 @@ const StyledNav = styled.nav`
   @media (max-width: ${({ theme }) => theme.device.m}) {
     display: block;
     position: absolute;
-    padding: 0 40px;
+    padding: 30px 40px;
     left: 0;
     top: 0;
     opacity: ${({ openMenu }) => (openMenu ? '1' : '0')};
     transform: ${({ openMenu }) =>
       openMenu ? 'translateY(100px)' : 'translateY(-100px)'};
     height: auto;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
+    border-radius: 15px;
   }
 
   @media (max-width: ${({ theme }) => theme.device.l}) {
@@ -87,13 +89,20 @@ const StyledButtonMain = styled(ButtonMain)`
   }
 `;
 
-const Nav = () => {
+const Nav = React.forwardRef(({ openMenu }, ref) => {
   const navRef = useRef();
+
+  console.log(ref[1].current);
+
+  const scrollInto = (ref) => {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const nav = navRef.current;
+
     animationsMoveY(nav);
-  });
+  }, []);
   const data = useStaticQuery(graphql`
     query GetHeaderLogo {
       file(relativePath: { eq: "logo.png" }) {
@@ -119,16 +128,20 @@ const Nav = () => {
           />
         </h1>
       </StyledLogoWrapper>
-      <StyledNav>
+      <StyledNav openMenu={openMenu}>
         <StyledNavButton>Home</StyledNavButton>
-        <StyledNavButton>Features</StyledNavButton>
-        <StyledNavButton>Pricing</StyledNavButton>
+        <StyledNavButton onClick={() => scrollInto(ref[1])}>
+          Features
+        </StyledNavButton>
+        <StyledNavButton onClick={() => scrollInto(ref[0])}>
+          Pricing
+        </StyledNavButton>
         <StyledNavButton>Blog</StyledNavButton>
 
         <StyledButtonMain>Get Started</StyledButtonMain>
       </StyledNav>
     </Wrapper>
   );
-};
+});
 
 export default Nav;

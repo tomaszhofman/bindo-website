@@ -80,3 +80,23 @@ export const aniamtionScrollBottom = (el) => {
     }
   );
 };
+
+export const aniamtionMoveXScroll = (el, translate) => {
+  gsap.fromTo(
+    el,
+    {
+      autoAlpha: 0,
+      x: `${translate}`,
+      duration: 1,
+    },
+    {
+      x: 0,
+      autoAlpha: 1,
+      duration: 0.7,
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 90%',
+      },
+    }
+  );
+};

@@ -57,7 +57,7 @@ const StyledBox = styled.span`
     top: -7px;
   }
 `;
-const HamburgerMenu = () => {
+const HamburgerMenu = (props) => {
   const hamburgerRef = useRef();
   useEffect(() => {
     const hamburger = hamburgerRef.current;
@@ -66,7 +66,7 @@ const HamburgerMenu = () => {
 
   return (
     <Wrapper ref={hamburgerRef}>
-      <StyledBox>
+      <StyledBox {...props}>
         <span></span>
       </StyledBox>
     </Wrapper>

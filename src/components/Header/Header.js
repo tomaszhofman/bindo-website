@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
 import Nav from './Nav/Nav';
 import styled from 'styled-components';
@@ -26,15 +26,20 @@ const NavAndHamburgerWrapper = styled.div`
   position: relative;
 `;
 
-const Header = () => {
+const Header = React.forwardRef((props, ref) => {
+  const [openMenu, setOpenMenu] = useState(false);
+  console.log(ref);
   return (
     <Wrapper>
       <NavAndHamburgerWrapper>
-        <Nav />
-        <HamburgerMenu />
+        <Nav openMenu={openMenu} ref={ref} />
+        <HamburgerMenu
+          onClick={() => setOpenMenu(!openMenu)}
+          openMenu={openMenu}
+        />
       </NavAndHamburgerWrapper>
     </Wrapper>
   );
-};
+});
 
 export default Header;

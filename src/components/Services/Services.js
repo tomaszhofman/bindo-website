@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import { ButtonMain } from '../ButtonMain/ButtonMain';
+
+import { aniamtionMoveXScroll } from '../../style/Animations';
 
 const Wrapper = styled.section`
   width: 100%;
@@ -77,7 +79,14 @@ const StyledImg = styled(Img)`
   height: 100%;
 `;
 
-const Services = () => {
+const Services = React.forwardRef((props, ref) => {
+  const titleRef = useRef();
+
+  useEffect(() => {
+    const title = titleRef.current;
+    aniamtionMoveXScroll(title, 10);
+  });
+
   const data = useStaticQuery(graphql`
     query MyQuery {
       allFile {
@@ -94,13 +103,13 @@ const Services = () => {
 
   console.log(data);
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <Container>
         <StyledImageWrapper>
           <StyledImg fluid={data.allFile.nodes[13].childImageSharp.fluid} />
         </StyledImageWrapper>
         <ServicesContentWrapper>
-          <h2>Subscription index</h2>
+          <h2 ref={titleRef}>Subscription index</h2>
           <h3>
             A daily dataset to keep you up to date on subscription market trends
             and what's happening in your vertical.
@@ -124,6 +133,6 @@ const Services = () => {
       </Container>
     </Wrapper>
   );
-};
+});
 
 export default Services;
