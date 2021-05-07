@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ButtonMain } from '../ButtonMain/ButtonMain';
 import { CardWrapper } from '../PricingCard/PricingCard';
 import styled from 'styled-components';
+
+import { aniamtionScrollBottom } from '../../style/Animations';
 
 const Wrapper = styled.section`
   max-width: 1200px;
@@ -86,15 +88,22 @@ const FeaturesWrapper = styled.div`
   }
 `;
 
-const Pricing = () => {
+const Pricing = React.forwardRef((props, ref) => {
+  const cardsRef = useRef();
+
+  useEffect(() => {
+    const cards = cardsRef.current;
+
+    aniamtionScrollBottom(cards);
+  });
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <StyledPricingHeader>
         <h1>
           Get the right plan <br /> for future product.
         </h1>
       </StyledPricingHeader>
-      <StyledPricingCards>
+      <StyledPricingCards ref={cardsRef}>
         <CardWrapper>
           <div>Starter</div>
           <h1>Free</h1>
@@ -133,6 +142,6 @@ const Pricing = () => {
       </StyledPricingCards>
     </Wrapper>
   );
-};
+});
 
 export default Pricing;

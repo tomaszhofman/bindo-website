@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Header from '../components/Header/Header';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../style/theme';
@@ -11,15 +11,17 @@ import Pricing from '../components/Pricing/Pricing';
 import Footer from '../components/Footer/Footer';
 
 const IndexPage = () => {
+  const pricingRef = useRef(null);
+  const servicesRef = useRef(null);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Header />
+      <Header ref={[pricingRef, servicesRef]} />
       <HeroSection />
       <Logos />
-      <Services />
+      <Services ref={servicesRef} />
       <OtherServices />
-      <Pricing />
+      <Pricing ref={pricingRef} />
       <Footer />
     </ThemeProvider>
   );
