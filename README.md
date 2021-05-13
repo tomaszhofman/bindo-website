@@ -60,5 +60,6 @@
 
 
 ## Live 📍
+bindo.netlify.app
 
 ## License 🔱
