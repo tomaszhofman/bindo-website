@@ -14,13 +14,10 @@
 
 </h1>
 
-<h4 align="center">Project title</h4>
+<h4 align="center">Bindo website</h4>
 
 <p align="center">
-  <a >
-    <img src=""
-         alt="Screenshot">
-  </a>
+
 </p>
 
 ## Project Overview 🎉
